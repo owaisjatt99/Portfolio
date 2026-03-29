@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Generation & Distribution | Muhammad Owais</title>
+    <meta name="description" content="Technical details for the Power Generation & Distribution Project - Muhammad Owais, Electrical Engineer.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- AOS for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- Electric/Tech Design System --- */
+        :root {
+            --bg-base: #03050c;
+            --bg-surface: #0a1128;
+            --bg-surface-light: #162447;
+            --plasma-orange: #ff7300;
+            --neon-purple: #b026ff;
+            --electric-blue: #00d4ff;
+            --text-heading: #ffffff;
+            --text-body: #a0b2d6;
+            --text-muted: #6b82b3;
+            --border-light: rgba(255, 115, 0, 0.15);
+            --border-glow: rgba(255, 115, 0, 0.5);
+            --glass-bg: rgba(10, 17, 40, 0.6);
+            --glass-blur: blur(20px);
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-body);
+            font-family: var(--font-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .ambient-bg {
+            position: fixed; inset: 0; z-index: -1; overflow: hidden;
+            background: radial-gradient(circle at center, #0a1128 0%, #03050c 100%);
+        }
+
+        .circuit-overlay {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 115, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 115, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.6;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+        }
+
+        .orb {
+            position: absolute; border-radius: 50%; filter: blur(120px);
+            opacity: 0.2; mix-blend-mode: screen;
+            animation: orbFloat 10s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .orb-1 { width: 45vw; height: 45vw; background: radial-gradient(circle, var(--plasma-orange), transparent 70%); top: -10%; left: -10%; }
+        .orb-2 { width: 40vw; height: 40vw; background: radial-gradient(circle, var(--neon-purple), transparent 70%); bottom: -10%; right: -5%; animation-delay: -5s; }
+
+        @keyframes orbFloat { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, -50px) scale(1.1); } }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; padding: 24px 0;
+            z-index: 1000; background: rgba(3, 5, 12, 0.8);
+            backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-light);
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--text-heading); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .logo-dot { width: 8px; height: 8px; background: var(--plasma-orange); border-radius: 50%; box-shadow: 0 0 10px var(--plasma-orange); }
+
+        .btn-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--plasma-orange); font-family: var(--font-mono); font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
+            text-decoration: none; transition: var(--transition-smooth);
+        }
+
+        .btn-back:hover { color: #fff; transform: translateX(-5px); }
+
+        /* --- Header / Hero --- */
+        .hero-detail {
+            padding: 120px 0 60px; text-align: left;
+            border-bottom: 1px solid var(--border-light);
+            background: linear-gradient(to bottom, rgba(255, 115, 0, 0.05), transparent);
+        }
+
+        .hero-detail h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--plasma-orange), var(--neon-purple));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+
+        .hero-detail .badge {
+            display: inline-block; padding: 6px 16px;
+            background: rgba(255, 115, 0, 0.1); border: 1px solid var(--plasma-orange);
+            color: var(--plasma-orange); border-radius: 4px;
+            font-family: var(--font-mono); font-size: 0.9rem;
+            margin-bottom: 24px; text-transform: uppercase;
+        }
+
+        .intro-text { font-size: 1.25rem; max-width: 800px; color: var(--text-body); margin-bottom: 40px; }
+
+        /* --- Grid Section --- */
+        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; padding: 60px 0; }
+
+        .tech-card {
+            background: var(--glass-bg); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-light); border-radius: 12px;
+            padding: 2rem; transition: var(--transition-smooth);
+            display: flex; flex-direction: column; gap: 20px;
+            overflow: hidden; position: relative;
+        }
+
+        .tech-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--plasma-orange), transparent);
+            opacity: 0; transition: var(--transition-smooth);
+        }
+
+        .tech-card:hover { transform: translateY(-5px); border-color: var(--plasma-orange); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 115, 0, 0.1); }
+        .tech-card:hover::before { opacity: 1; }
+
+        .card-icon { width: 50px; height: 50px; background: rgba(255, 115, 0, 0.1); border: 1px solid var(--plasma-orange); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--plasma-orange); box-shadow: 0 0 10px rgba(255, 115, 0, 0.2) inset; }
+
+        .tech-card h3 { font-size: 1.4rem; color: #fff; font-family: var(--font-mono); }
+
+        .tech-card p { font-size: 0.95rem; color: var(--text-body); }
+
+        .tech-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .tech-card li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-body); }
+        .tech-card li::before { content: '>'; color: var(--plasma-orange); font-weight: 700; font-family: var(--font-mono); }
+
+        .section-img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border-light); margin-top: 10px; filter: grayscale(10%) contrast(1.1) brightness(0.85); transition: var(--transition-smooth); }
+        .tech-card:hover .section-img { filter: grayscale(0%) brightness(1); border-color: var(--plasma-orange); }
+
+        /* --- Footer --- */
+        footer { border-top: 1px solid var(--border-light); padding: 40px 0; margin-top: 60px; text-align: center; }
+        .footer-text { color: var(--text-muted); font-size: 0.9rem; font-family: var(--font-mono); }
+
+        @media (max-width: 768px) {
+            .hero-detail { padding-top: 140px; }
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-bg">
+        <div class="circuit-overlay"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                Muhammad Owais <span class="logo-dot"></span>
+            </a>
+            <a href="index.html#projects" class="btn-back">
+                <i class='bx bx-left-arrow-alt'></i> Back to Home
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero-detail" data-aos="fade-up">
+            <span class="badge">Diploma of Associate Engineering (Final Year Project)</span>
+            <h1>Electrical Generation and Distribution System</h1>
+            <p class="intro-text">
+                Designing and implementing a small-scale integrated electrical network, from hydel power generation to multi-tier voltage transformation and distribution.
+            </p>
+        </section>
+
+        <section class="detail-grid">
+            <!-- Hydel Power Generation -->
+            <article class="tech-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-icon"><i class='bx bx-water'></i></div>
+                <h3>Hydel Power Generation</h3>
+                <p>Generating electrical power by coupling a single-phase AC motor to a small water turbine to convert kinetic energy into electrical energy.</p>
+                <ul>
+                    <li>AC generation and synchronization.</li>
+                    <li>Mechanical-electrical coupling.</li>
+                    <li>Basic hydel system principles.</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1559825481-12a05cc00344?q=80&w=600&auto=format&fit=crop" alt="Hydel Power Generation" class="section-img">
+            </article>
+
+            <!-- Transformer Fabrication -->
+            <article class="tech-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-icon"><i class='bx bx-broadcast'></i></div>
+                <h3>Transformer Fabrication</h3>
+                <p>Designing and manually winding step-up and step-down transformers to meet specific distribution requirements.</p>
+                <ul>
+                    <li>Transformer winding and calculations.</li>
+                    <li>Magnetic core assembly.</li>
+                    <li>Hands-on electrical fabrication.</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1509390144018-eeaf65052242?q=80&w=600&auto=format&fit=crop" alt="Industrial Power Transformer Unit" class="section-img">
+            </article>
+
+            <!-- Power Distribution System -->
+            <article class="tech-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-icon"><i class='bx bx-git-branch'></i></div>
+                <h3>Power Distribution System</h3>
+                <p>Implementing an overhead line system to distribute AC power with proper voltage regulation and safety precautions.</p>
+                <ul>
+                    <li>AC power distribution networks.</li>
+                    <li>Overhead line installation.</li>
+                    <li>Safety protocols in power systems.</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=600&auto=format&fit=crop" alt="Overhead Power Distribution Lines" class="section-img">
+            </article>
+
+            <!-- AC to DC Conversion -->
+            <article class="tech-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-icon"><i class='bx bx-reset'></i></div>
+                <h3>AC to DC Conversion</h3>
+                <p>Using full-wave bridge rectifier circuits and filtering to supply stable DC power to LED loads and electronics.</p>
+                <ul>
+                    <li>Power electronics and rectification.</li>
+                    <li>Rectifier circuit design and filtering.</li>
+                    <li>LED powering and DC loads.</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&auto=format&fit=crop" alt="Rectifier Circuit Board Electronics" class="section-img">
+            </article>
+
+            <!-- Load Connection and Testing -->
+            <article class="tech-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="card-icon"><i class='bx bx-poll'></i></div>
+                <h3>Load Connection & Testing</h3>
+                <p>Connecting AC/DC loads to verify performance, monitoring voltage, current, and overall system stability.</p>
+                <ul>
+                    <li>Electrical testing and monitoring.</li>
+                    <li>System integration and validation.</li>
+                    <li>Troubleshooting and performance optimization.</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=600&auto=format&fit=crop" alt="Electrical Testing and Measurement" class="section-img">
+            </article>
+        </section>
+
+        <!-- Project Outcome Section (New) -->
+        <section class="outcome-section" data-aos="fade-up">
+            <style>
+                .outcome-section { margin-top: 60px; padding: 40px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--border-light); border-radius: 12px; }
+                .outcome-section h2 { font-family: var(--font-mono); color: var(--plasma-orange); margin-bottom: 20px; font-size: 1.8rem; }
+                .outcome-list { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+                .outcome-list li { display: flex; align-items: flex-start; gap: 15px; font-size: 1.1rem; }
+                .outcome-list li i { color: var(--plasma-orange); font-size: 1.4rem; margin-top: 4px; }
+            </style>
+            <h2>Project Outcome</h2>
+            <ul class="outcome-list">
+                <li><i class='bx bx-check-circle'></i> Successfully generated, transformed, and distributed electrical power using a small-scale hydel system.</li>
+                <li><i class='bx bx-check-circle'></i> Developed hands-on skills in transformer fabrication, AC/DC conversion, and distribution network setup.</li>
+                <li><i class='bx bx-check-circle'></i> Demonstrated integration of theoretical knowledge with practical application in electrical engineering.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="footer-text">&copy; 2024 Muhammad Owais. Powering the Future.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800, easing: 'ease-out-cubic' });
+    </script>
+</body>
+
+</html>

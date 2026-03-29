@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Engineer – Smartphone Manufacturing | Muhammad Owais</title>
+    <meta name="description" content="Detailed role at Airlink Group - Muhammad Owais, Electrical Engineer.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- AOS for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- Electric/Tech Design System (Reusing from index.html) --- */
+        :root {
+            --electric-blue: #00d4ff;
+            --cyan-glow: #00ffff;
+            --neon-purple: #b026ff;
+            --plasma-orange: #ff7300;
+            --text-heading: #ffffff;
+            --text-body: #a0b2d6;
+            --text-muted: #6b82b3;
+            --border-light: rgba(0, 212, 255, 0.15);
+            --border-glow: rgba(0, 255, 255, 0.5);
+            --glass-bg: rgba(10, 17, 40, 0.6);
+            --glass-blur: blur(20px);
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-body);
+            font-family: var(--font-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .ambient-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #0a1128 0%, #03050c 100%);
+        }
+
+        .circuit-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.6;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.25;
+            mix-blend-mode: screen;
+            animation: orbFloat 10s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .orb-1 { width: 45vw; height: 45vw; background: radial-gradient(circle, var(--electric-blue), transparent 70%); top: -10%; left: -10%; }
+        .orb-2 { width: 40vw; height: 40vw; background: radial-gradient(circle, var(--neon-purple), transparent 70%); bottom: -10%; right: -5%; animation-delay: -5s; }
+
+        @keyframes orbFloat { 0% { transform: translate(0, 0) scale(1); opacity: 0.2; } 100% { transform: translate(50px, -50px) scale(1.1); opacity: 0.4; } }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 0;
+            z-index: 1000;
+            background: rgba(3, 5, 12, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--text-heading); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .logo-dot { width: 8px; height: 8px; background: var(--cyan-glow); border-radius: 50%; box-shadow: 0 0 10px var(--cyan-glow); }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--cyan-glow);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-back:hover { color: #fff; transform: translateX(-5px); }
+
+        /* --- Header / Hero --- */
+        .hero-detail {
+            padding: 120px 0 60px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-light);
+            background: linear-gradient(to bottom, rgba(176, 38, 255, 0.05), transparent);
+        }
+
+        .hero-detail h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--electric-blue), var(--cyan-glow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-detail .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--electric-blue);
+            color: var(--electric-blue);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .intro-text { font-size: 1.25rem; max-width: 800px; color: var(--text-body); margin-bottom: 40px; }
+
+        /* --- Grid Section --- */
+        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; padding: 60px 0; }
+
+        .tech-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyan-glow), transparent);
+            opacity: 0; transition: var(--transition-smooth);
+        }
+
+        .tech-card:hover { transform: translateY(-5px); border-color: var(--cyan-glow); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 212, 255, 0.1); }
+        .tech-card:hover::before { opacity: 1; }
+
+        .card-icon { width: 50px; height: 50px; background: rgba(0, 212, 255, 0.1); border: 1px solid var(--electric-blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--electric-blue); box-shadow: 0 0 10px rgba(0, 212, 255, 0.2) inset; }
+
+        .tech-card h3 { font-size: 1.4rem; color: #fff; font-family: var(--font-mono); }
+
+        .tech-card p { font-size: 0.95rem; color: var(--text-body); }
+
+        .tech-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .tech-card li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: var(--text-body); }
+        .tech-card li::before { content: '>'; color: var(--electric-blue); font-weight: 700; font-family: var(--font-mono); }
+
+        .section-img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border-light); margin-top: 10px; filter: grayscale(10%) contrast(1.1) brightness(0.85); transition: var(--transition-smooth); }
+        .tech-card:hover .section-img { filter: grayscale(0%) brightness(1); border-color: var(--cyan-glow); }
+
+        /* --- Footer --- */
+        footer { border-top: 1px solid var(--border-light); padding: 40px 0; margin-top: 60px; text-align: center; }
+        .footer-text { color: var(--text-muted); font-size: 0.9rem; font-family: var(--font-mono); }
+
+        @media (max-width: 768px) {
+            .hero-detail { padding-top: 140px; }
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-bg">
+        <div class="circuit-overlay"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                Muhammad Owais <span class="logo-dot"></span>
+            </a>
+            <a href="index.html#experience" class="btn-back">
+                <i class='bx bx-left-arrow-alt'></i> Back to Home
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero-detail" data-aos="fade-up">
+            <span class="badge">Airlink Group | Aug 2023 — Feb 2024</span>
+            <h1>Process Engineer – Smartphone Manufacturing</h1>
+            <p class="intro-text">
+                At Airlink, I worked on the smartphone assembly line, focusing on process optimization, quality control, and production efficiency for Xiaomi devices manufactured locally in Pakistan.
+            </p>
+        </section>
+
+        <section class="detail-grid">
+            <!-- Production Process -->
+            <article class="tech-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-icon"><i class='bx bx-mobile-alt'></i></div>
+                <h3>Production Process Management</h3>
+                <p>Ensuring smooth assembly of Xiaomi handsets at a state-of-the-art facility.</p>
+                <ul>
+                    <li>Played key role on the smartphone assembly line.</li>
+                    <li>Coordinated assembly tasks for seamless handsets production.</li>
+                    <li>Maintained smooth production flow in factory environment.</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=600&auto=format&fit=crop" alt="Xiaomi Smart Manufacturing" class="section-img">
+            </article>
+
+            <!-- Process Optimization -->
+            <article class="tech-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-icon"><i class='bx bx-trending-up'></i></div>
+                <h3>Process Optimization</h3>
+                <p>Identifying and implementing areas for efficiency and waste reduction.</p>
+                <ul>
+                    <li>Evaluated line processes for throughput enhancement.</li>
+                    <li>Implemented enhancements for line productivity.</li>
+                    <li>Drove quality consistency through work standard updates.</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=600&auto=format&fit=crop" alt="Robotic Assembly Line" class="section-img">
+            </article>
+
+            <!-- Quality Control -->
+            <article class="tech-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-icon"><i class='bx bx-check-shield'></i></div>
+                <h3>Quality Control & Testing</h3>
+                <p>Stringent monitoring to ensure every device meets global standards.</p>
+                <ul>
+                    <li>Ensured products met quality benchmarks in each stage.</li>
+                    <li>Collaborated with inspection teams for defect detection.</li>
+                    <li>Implemented early fault resolution methodologies.</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=600&auto=format&fit=crop" alt="Engineering Quality Testing" class="section-img">
+            </article>
+
+            <!-- SOPs & Documentation -->
+            <article class="tech-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-icon"><i class='bx bx-file'></i></div>
+                <h3>Documentation & SOPs</h3>
+                <p>Technical writing to maintain strict compliance and manufacturing standards.</p>
+                <ul>
+                    <li>Maintained assembly checklists and work instructions.</li>
+                    <li>Updated SOPs based on performance metrics feedback.</li>
+                    <li>Ensured alignment with Xiaomi manufacturing benchmarks.</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?q=80&w=600&auto=format&fit=crop" alt="Automated SOP Monitoring" class="section-img">
+            </article>
+
+            <!-- Team Coordination -->
+            <article class="tech-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="card-icon"><i class='bx bx-group'></i></div>
+                <h3>Cross-Functional Synergy</h3>
+                <p>Collaborating with multiple departments to resolve operational bottlenecks.</p>
+                <ul>
+                    <li>Partnered with Technicians and Quality Engineers.</li>
+                    <li>Identified and resolved production line bottlenecks.</li>
+                    <li>Supported training of new line operators on best practices.</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop" alt="Technical Team Collaboration" class="section-img">
+            </article>
+
+            <!-- Health & Safety -->
+            <article class="tech-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="card-icon"><i class='bx bxs-user-check'></i></div>
+                <h3>Health & Safety Compliance</h3>
+                <p>Ensuring a safe environment through strict factory standards.</p>
+                <ul>
+                    <li>Adhered to safety protocols on production floor.</li>
+                    <li>Executed machine safety and ergonomic work methods.</li>
+                    <li>Proactive reporting and hazard mitigation.</li>
+                </ul>
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600&auto=format&fit=crop" alt="High-Tech Operational Safety" class="section-img">
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="footer-text">&copy; 2024 Muhammad Owais. Engineered for the Future.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800, easing: 'ease-out-cubic' });
+    </script>
+</body>
+
+</html>
